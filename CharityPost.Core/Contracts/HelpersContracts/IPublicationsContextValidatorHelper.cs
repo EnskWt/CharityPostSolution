@@ -8,8 +8,6 @@ namespace CharityPost.Core.Contracts.HelpersContracts
 {
     public interface IPublicationsContextValidatorHelper
     {
-        Task<bool> IsPublicationExists(Guid publicationId);
-
         Task<bool> IsPublicationOwnedAuthor(Guid publicationId, Guid authorId);
     }
 }

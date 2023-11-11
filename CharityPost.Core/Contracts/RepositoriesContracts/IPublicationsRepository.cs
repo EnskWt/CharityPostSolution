@@ -13,7 +13,7 @@ namespace CharityPost.Core.Contracts.RepositoryContracts
     public interface IPublicationsRepository 
     {
         Task<List<Publication>> GetAllPublications(string sort, Expression<Func<Publication, bool>> filter, int pageNumber, int pageSize);
-        Task<Publication> GetPublicationById(Guid publicationId);
+        Task<Publication?> GetPublicationById(Guid publicationId);
 
         Task<Guid> AddPublication(Publication publication);
 

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace CharityPost.Core.Contracts.HelpersContracts
 {
-    internal class IModelValidatorHelper
+    public interface IModelValidatorHelper<T> where T : class
     {
+        Task ModelValidation(T model);
     }
 }

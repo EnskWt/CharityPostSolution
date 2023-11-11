@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CharityPost.Core.Domain.Entities.PublicationEntities;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,7 @@ namespace CharityPost.Core.Domain.Entities.IdentityEntities
     {
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
+
+        public List<Publication> Publications { get; set; } = null!;
     }
 }

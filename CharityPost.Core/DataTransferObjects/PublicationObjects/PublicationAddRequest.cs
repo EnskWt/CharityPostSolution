@@ -19,6 +19,9 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         [Required]
         public DateTime PublishedDate { get; set; } = DateTime.UtcNow;
 
+        [Required]
+        public Guid AuthorId { get; set; }
+
         public Publication ToPublication()
         {
             return new Publication
@@ -26,7 +29,8 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Title = Title,
                 Description = Description,
                 PublicationCategory = PublicationCategory,
-                PublishedDate = PublishedDate
+                PublishedDate = PublishedDate,
+                AuthorId = AuthorId
             };
         }
     }

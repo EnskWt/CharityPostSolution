@@ -55,9 +55,9 @@ namespace CharityPost.Infrastructure.Repositories
             return publications;
         }
 
-        public Task<Publication?> GetPublicationById(Guid publicationId)
+        public async Task<Publication?> GetPublicationById(Guid publicationId)
         {
-            var publication = _db.Publications.FirstOrDefaultAsync(p => p.Id == publicationId);
+            var publication = await _db.Publications.FirstOrDefaultAsync(p => p.Id == publicationId);
             return publication;
         }
 

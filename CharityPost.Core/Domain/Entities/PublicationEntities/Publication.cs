@@ -1,4 +1,5 @@
-﻿using CharityPost.Core.Enums;
+﻿using CharityPost.Core.Domain.Entities.IdentityEntities;
+using CharityPost.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,8 @@ namespace CharityPost.Core.Domain.Entities.PublicationEntities
         public string Description { get; set; } = null!;
         public PublicationCategories PublicationCategory { get; set; }
         public DateTime PublishedDate { get; set; }
+
+        public Guid AuthorId { get; set; }
+        public virtual ApplicationUser Author { get; set; } = null!;
     }
 }
