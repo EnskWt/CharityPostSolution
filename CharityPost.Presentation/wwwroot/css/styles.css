@@ -1,0 +1,311 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    color: rgb(36, 36, 29);
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(238, 255, 251);
+    max-width: 100%;
+}
+
+/* HEADER ONLY BELOW */
+.header {
+    position: fixed;
+    height: 12vh;
+    width: 100%;
+    top: 0;
+    border-radius: 0 0 20px 20px;
+    background-color: rgb(0, 148, 254);
+}
+
+.header_logo {
+    height: 100%;
+    margin-left: 2vw;
+}
+
+    .header_logo img {
+        height: 95%;
+    }
+
+.header_right {
+    position: absolute;
+    margin: 0 5vw 0 30vw;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    align-items: center;
+    display: inline-flex;
+    justify-content: end;
+    flex-wrap: wrap;
+    min-height: 20%;
+}
+
+.header_search * {
+    height: 100%;
+    display: inline-block;
+}
+
+.header_search {
+    height: 100%;
+}
+
+    .header_search input {
+        padding: 5px;
+        border-radius: 20px;
+    }
+
+        .header_search input[type=text] {
+            border-color: white;
+            border-style: solid;
+            border-width: 1px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .header_search input[type=submit] {
+            background-color: rgb(161, 186, 255);
+            padding: 5px 10px;
+            border: none;
+            border-bottom: 1px solid rgb(0, 49, 84);
+        }
+
+.header_auth {
+    margin-left: 10px;
+}
+
+    .header_auth > a {
+        display: inline-block;
+        border-left: 1px solid rgb(255, 255, 255);
+        padding-left: 10px;
+        font-weight: bold;
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        text-decoration: none;
+    }
+
+        .header_auth > a:nth-of-type(1) {
+            padding-right: 10px;
+        }
+
+
+/* end of header formatting */
+
+/* ARTICLE FORMATTING BELOW */
+main {
+    padding-top: 15vh;
+}
+
+.main__content__article {
+    /* margin: 300px; */
+    margin: 70px auto;
+    width: 80%;
+    padding: 30px;
+    border-radius: 20px;
+    border-color: rgb(255, 255, 255);
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0px 0px 10px rgba(40, 132, 132, 0.5);
+}
+
+.main__content__article__img img {
+    border-radius: 25px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
+}
+
+.main__content__article__title {
+    font-family: 'Roboto', sans-serif;
+    margin: 30px 0px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(36, 36, 29);
+    text-align: left;
+}
+
+.main__content__article__description {
+    font-family: 'Roboto', sans-serif;
+    margin: 10px 0px 30px;
+    font-size: 18px;
+    color: rgb(36, 36, 29);
+    text-align: left;
+}
+
+.main__content_article__progress {
+    align-items: center;
+    padding: 3px;
+    margin: 3px;
+}
+
+.main__content__article__progress__bar {
+    width: 100%;
+    height: 20px;
+    background-color: rgb(144, 187, 215);
+    /* box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5); */
+    border-radius: 20px;
+}
+
+.main__content__article__progress__bar__fill {
+    height: 100%;
+    width: 20%;
+    background-color: rgb(53, 119, 218);
+    border-radius: 20px;
+}
+
+.main__content__article__progress__bar__title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(36, 36, 29);
+    text-align: center;
+    padding: 1px;
+    margin: 5px 0;
+}
+
+.main__content__article__button {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+    .main__content__article__button a {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        color: rgb(36, 36, 29);
+        background-color: rgb(97, 137, 240);
+        text-align: center;
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 20px;
+        /* border-color: rgb(255, 255, 255); */
+        border-style: none;
+        border-width: 1px;
+        box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
+        text-decoration: none;
+    }
+
+    .main__content__article__button a:hover {
+        background-color: rgb(53, 119, 218);
+    }
+
+/* end of article formatting */
+
+/* FOOTER FORMATTING BELOW */
+footer {
+    background-color: rgb(87, 87, 87);
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: rgb(210, 206, 206);
+    margin-top: auto;
+}
+
+    footer p {
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    footer a {
+        text-decoration: none;
+        text-align: center;
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+        color: rgb(170, 170, 170);
+    }
+
+.footer__social {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+    .footer__social img {
+        height: 1em;
+    }
+
+/* end of footer formatting */
+
+/* AUTH FORMATTING BELOW */
+
+fieldset {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+legend {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(36, 36, 29);
+    text-align: center;
+    padding: 10px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(36, 36, 29);
+    text-align: center;
+    padding: 10px;
+}
+
+.auth_field input[type=text], input[type=password] {
+    width: 50%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 20px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
+}
+
+.auth_field input[type=submit] {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: rgb(36, 36, 29);
+    background-color: rgb(97, 137, 240);
+    text-align: center;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    /* border-color: rgb(255, 255, 255); */
+    border-style: none;
+    border-width: 1px;
+    box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
+}
+/* end of auth formatting */
+
+/*  SUCCESS PAGE FORMATTING BELOW */
+
+/* end of success page formatting */
+
+/* POST PAGE FORMATTING BELOW */
+
+.misc_info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    color: rgb(36, 36, 29);
+    text-align: left;
+    padding-bottom: 5px;
+}
+
+.misc2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: rgb(36, 36, 29);
+    text-align: left;
+    padding-bottom: 8px;
+}
+
+/* end of post page formatting */

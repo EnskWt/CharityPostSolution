@@ -18,6 +18,8 @@ namespace CharityPost.Core.Services.Commands.PublicationsCommands
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
+        public GetPublicationsCommand() { }
+
         public GetPublicationsCommand(SortOptions sortOption, SortOrderOptions sortOrderOption, List<FilterOptions> filterOptions, string filterValue, int pageNumber, int pageSize)
         {
             SortOption = sortOption;

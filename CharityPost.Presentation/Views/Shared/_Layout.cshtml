@@ -1,0 +1,46 @@
+﻿﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header_logo">
+                <a href="/main.html"><img src="img/logo_portr.jpg" alt="Logotype"></a>
+            </div>
+            <div class="header_right">
+                <div class="header_search">
+                    <form action="index.php" method="post">
+                        <input type="text" name="search" placeholder="Search for...">
+                        <input type="submit" name="submit" value="Find">
+                    </form>
+                </div>
+                <div class="header_auth">
+                    <a href="index.php">Sign in</a>
+                    <a href="index.php">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>(c) CharityPost, 2023</p>
+        <p>Follow us on social networks:</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/"><img src="img/facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="img/instagram.png" alt="Instagram"></a>
+            <a href="https://twitter.com/"><img src="img/twitter.webp" alt="Twitter"></a>
+        </div>
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

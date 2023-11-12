@@ -21,7 +21,7 @@ namespace CharityPost.Core.Helpers
         {
             _sorts = new Dictionary<SortOptions, string>
             {
-                { SortOptions.Date, "Date" }
+                { SortOptions.Date, "PublishedDate" }
             };
 
             _filters = new Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>>

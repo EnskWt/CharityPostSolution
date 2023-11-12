@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PublicationResponse>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+@foreach (var publication in Model)
+{
+    <div class="main__content__article">
+        @*images not implemented yet*@
+        @*<div class="main__content__article__img">
+        <img src="img/zavfq4x83p431.webp" alt="Animal">
+        </div>*@
+
+        <div class="main__content__article__title">
+            <h2>@publication.Title</h2>
+        </div>
+
+        <div class="main__content__article__description">
+            <p>@publication.Description</p>
+        </div>
+
+        @*not implemented yet*@
+        @*<div class="main__content__article__progress">
+
+            <div class="main__content__article__progress__bar">
+                <div class="main__content__article__progress__bar__fill"></div>
+            </div>
+            <div class="main__content__article__progress__bar__title">
+                Raised 1000$ of 5000$ required
+            </div>
+
+        </div>*@
+
+        <div class="main__content__article__button">
+            <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id">Donate</a>
+        </div>
+    </div>
+}

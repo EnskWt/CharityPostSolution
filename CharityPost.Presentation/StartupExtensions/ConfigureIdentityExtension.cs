@@ -30,8 +30,6 @@ namespace CharityPost.Presentation.StartupExtensions
 
             services.AddAuthorization(options =>
             {
-                options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-
                 options.AddPolicy("NotAuthorized", policy =>
                 {
                     policy.RequireAssertion(context =>
