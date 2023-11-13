@@ -8,9 +8,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharityPost.Core.Contracts.RepositoryContracts
+namespace CharityPost.Core.Domain.RepositoriesContracts
 {
-    public interface IPublicationsRepository 
+    public interface IPublicationsRepository
     {
         Task<List<Publication>> GetAllPublications(string sort, Expression<Func<Publication, bool>> filter, int pageNumber, int pageSize);
         Task<Publication?> GetPublicationById(Guid publicationId);

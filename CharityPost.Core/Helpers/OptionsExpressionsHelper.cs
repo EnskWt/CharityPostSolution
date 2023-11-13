@@ -40,10 +40,14 @@ namespace CharityPost.Core.Helpers
 
         public Expression<Func<Publication, bool>> GetFilterExpression(List<FilterOptions> filterOptions, string filterValue)
         {
-            var predicateExpression = PredicateBuilder.New<Publication>();
+            var predicateExpression = PredicateBuilder.New<Publication>(true);
 
             foreach (var filterOption in filterOptions)
             {
+                if (filterOption == FilterOptions.None)
+                {
+                    break;
+                }
                 predicateExpression = predicateExpression.And(_filters[filterOption](filterValue));
             }
 

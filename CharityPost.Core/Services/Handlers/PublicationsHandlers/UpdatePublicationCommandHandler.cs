@@ -1,4 +1,4 @@
-﻿using CharityPost.Core.Contracts.RepositoryContracts;
+﻿using CharityPost.Core.Domain.RepositoriesContracts;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
 using MediatR;
 using System;

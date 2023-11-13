@@ -1,5 +1,7 @@
 ﻿using CharityPost.Core.DataTransferObjects.PublicationObjectsContracts;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
+using CharityPost.Core.Helpers;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 namespace CharityPost.Core.DataTransferObjects.PublicationObjects
@@ -15,13 +17,17 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         [Required]
         public string Description { get; set; } = null!;
 
+        [Required]
+        public List<IFormFile> Images { get; set; } = null!;
+
         public Publication ToPublication()
         {
             return new Publication
             {
                 Id = Id,
                 Title = Title,
-                Description = Description
+                Description = Description,
+                Images = ImagesConverterHelper.ConvertImagesToByteArrays(Images)
             };
         }
     }

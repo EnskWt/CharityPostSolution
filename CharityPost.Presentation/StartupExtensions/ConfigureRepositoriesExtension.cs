@@ -1,4 +1,4 @@
-﻿using CharityPost.Core.Contracts.RepositoryContracts;
+﻿using CharityPost.Core.Domain.RepositoriesContracts;
 using CharityPost.Infrastructure.Repositories;
 
 namespace CharityPost.Presentation.StartupExtensions

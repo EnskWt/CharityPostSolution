@@ -1,5 +1,4 @@
-﻿using CharityPost.Core.Contracts.RepositoryContracts;
-using CharityPost.Core.DataTransferObjects.PublicationObjects;
+﻿using CharityPost.Core.DataTransferObjects.PublicationObjects;
 using CharityPost.Core.Enums;
 using CharityPost.Infrastructure.DatabaseContext;
 using System;
@@ -9,6 +8,7 @@ using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
+using CharityPost.Core.Domain.RepositoriesContracts;
 
 namespace CharityPost.Infrastructure.Repositories
 {

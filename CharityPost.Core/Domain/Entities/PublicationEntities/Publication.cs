@@ -16,6 +16,8 @@ namespace CharityPost.Core.Domain.Entities.PublicationEntities
         public PublicationCategories PublicationCategory { get; set; }
         public DateTime PublishedDate { get; set; }
 
+        public virtual List<Image> Images { get; set; } = null!;
+
         public Guid AuthorId { get; set; }
         public virtual ApplicationUser Author { get; set; } = null!;
     }

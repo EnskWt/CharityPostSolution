@@ -20,12 +20,12 @@ namespace CharityPost.Core.Services.Commands.PublicationsCommands
 
         public GetPublicationsCommand() { }
 
-        public GetPublicationsCommand(SortOptions sortOption, SortOrderOptions sortOrderOption, List<FilterOptions> filterOptions, string filterValue, int pageNumber, int pageSize)
+        public GetPublicationsCommand(SortOptions sortOption, SortOrderOptions sortOrderOption, List<FilterOptions>? filterOptions, string? filterValue, int pageNumber, int pageSize)
         {
             SortOption = sortOption;
             SortOrderOptions = sortOrderOption;
-            FilterOptions = filterOptions;
-            FilterValue = filterValue;
+            FilterOptions = filterOptions ?? new List<FilterOptions>();
+            FilterValue = filterValue ?? string.Empty;
             PageNumber = pageNumber;
             PageSize = pageSize;
         }

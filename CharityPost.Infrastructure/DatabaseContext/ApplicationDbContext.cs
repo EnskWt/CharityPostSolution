@@ -14,6 +14,12 @@ namespace CharityPost.Infrastructure.DatabaseContext
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Publication>()
+                .HasMany(p => p.Images)
+                .WithOne(i => i.Publication)
+                .HasForeignKey(i => i.PublicationId);
+
         }
     }
 }

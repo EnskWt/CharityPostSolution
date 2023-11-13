@@ -1,4 +1,5 @@
 ﻿using CharityPost.Core.DataTransferObjects.PublicationObjects;
+using CharityPost.Core.Enums;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,9 +16,9 @@ namespace CharityPost.Presentation.Controllers
         }
 
         [Route("/")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index([FromQuery] SortOptions sortOption = SortOptions.Date, [FromQuery] SortOrderOptions sortOrderOption = SortOrderOptions.ASC, [FromQuery] List<FilterOptions>? filterOptions = null, [FromQuery] string? filterValue = null, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
-            var command = new GetPublicationsCommand();
+            var command = new GetPublicationsCommand(sortOption, sortOrderOption, filterOptions, filterValue, pageNumber, pageSize);
             var result = await _mediator.Send(command);
 
             var publications = new List<PublicationResponse>()

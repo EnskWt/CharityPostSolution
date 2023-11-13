@@ -1,7 +1,7 @@
 ﻿using CharityPost.Core.Contracts.HelpersContracts;
-using CharityPost.Core.Contracts.RepositoryContracts;
 using CharityPost.Core.DataTransferObjects.PublicationObjects;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
+using CharityPost.Core.Domain.RepositoriesContracts;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
 using MediatR;
 using System;
