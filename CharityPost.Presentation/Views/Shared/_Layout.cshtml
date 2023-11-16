@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
@@ -12,18 +12,19 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a href="/main.html"><img src="img/logo_portr.jpg" alt="Logotype"></a>
+                <a asp-controller="Publications" asp-action="Index"><img src="/img/logo_portr.jpg" alt="Logotype"></a>
             </div>
             <div class="header_right">
                 <div class="header_search">
                     <form action="index.php" method="post">
+                        @*change it using asp action Index with parameters*@
                         <input type="text" name="search" placeholder="Search for...">
                         <input type="submit" name="submit" value="Find">
                     </form>
                 </div>
                 <div class="header_auth">
-                    <a href="index.php">Sign in</a>
-                    <a href="index.php">Sign up</a>
+                    <a asp-controller="Auth" asp-action="Login">Sign in</a>
+                    <a asp-controller="Auth" asp-action="Register">Sign up</a>
                 </div>
             </div>
         </div>
@@ -37,9 +38,9 @@
         <p>(c) CharityPost, 2023</p>
         <p>Follow us on social networks:</p>
         <div class="footer__social">
-            <a href="https://www.facebook.com/"><img src="img/facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com/"><img src="img/instagram.png" alt="Instagram"></a>
-            <a href="https://twitter.com/"><img src="img/twitter.webp" alt="Twitter"></a>
+            <a href="https://www.facebook.com/"><img src="/img/facebook.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="/img/instagram.png" alt="Instagram"></a>
+            <a href="https://twitter.com/"><img src="/img/twitter.webp" alt="Twitter"></a>
         </div>
     </footer>
 

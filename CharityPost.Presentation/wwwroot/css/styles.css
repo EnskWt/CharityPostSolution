@@ -192,9 +192,9 @@ main {
         text-decoration: none;
     }
 
-    .main__content__article__button a:hover {
-        background-color: rgb(53, 119, 218);
-    }
+        .main__content__article__button a:hover {
+            background-color: rgb(53, 119, 218);
+        }
 
 /* end of article formatting */
 

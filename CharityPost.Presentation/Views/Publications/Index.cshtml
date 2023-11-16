@@ -7,7 +7,7 @@
 @foreach (var publication in Model)
 {
     <div class="main__content__article">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        @*<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 @for (var i = 0; i < publication.ImagesUrls.Count; i++)
                 {
@@ -30,7 +30,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
-        </div>
+        </div>*@
 
         <div class="main__content__article__title">
             <h2>@publication.Title</h2>

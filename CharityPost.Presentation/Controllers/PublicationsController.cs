@@ -27,23 +27,50 @@ namespace CharityPost.Presentation.Controllers
                 {
                     Id = Guid.NewGuid(),
                     Title = "Test1",
-                    Description = "Test1"
+                    Description = "Test1",
+                    PublishedDate = DateTime.UtcNow
                 },
                 new PublicationResponse
                 {
                     Id = Guid.NewGuid(),
                     Title = "Test2",
-                    Description = "Test2"
+                    Description = "Test2",
+                    PublishedDate = DateTime.UtcNow
                 },
                 new PublicationResponse
                 {
                     Id = Guid.NewGuid(),
                     Title = "Test3",
-                    Description = "Test3"
+                    Description = "Test3",
+                    PublishedDate = DateTime.UtcNow
                 },
             };
 
             return View(publications);
+        }
+
+        [Route("/publications/{id}")]
+        public async Task<IActionResult> PublicationDetails(Guid id)
+        {
+            var command = new GetPublicationCommand(id);
+            var result = await _mediator.Send(command);
+
+            var publication = new PublicationResponse
+            {
+                Id = Guid.NewGuid(),
+                Title = "TestTitle",
+                Description = "TestDescription",
+                PublishedDate = DateTime.UtcNow,
+                Author = new Core.Domain.Entities.IdentityEntities.ApplicationUser
+                {
+                    Id = Guid.NewGuid(),
+                    FirstName = "TestName",
+                    LastName = "TestSurname",
+                    Email = ""
+                }
+            };
+
+            return View(publication);
         }
     }
 }

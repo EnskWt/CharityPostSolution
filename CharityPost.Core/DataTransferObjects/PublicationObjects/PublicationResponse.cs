@@ -9,6 +9,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public Guid Id { get; set; }
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
+        public DateTime PublishedDate { get; set; }
 
         public List<string> ImagesUrls { get; set; } = null!;
 
@@ -25,6 +26,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Id = publication.Id,
                 Title = publication.Title,
                 Description = publication.Description,
+                PublishedDate = publication.PublishedDate,
                 ImagesUrls = ImagesConverterHelper.ConvertImagesByteArraysToUrls(publication.Images)
             };
         }

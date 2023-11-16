@@ -57,7 +57,9 @@ namespace CharityPost.Infrastructure.Repositories
 
         public async Task<Publication?> GetPublicationById(Guid publicationId)
         {
-            var publication = await _db.Publications.FirstOrDefaultAsync(p => p.Id == publicationId);
+            var publication = await _db.Publications
+                .Include(p => p.Author)
+                .FirstOrDefaultAsync(p => p.Id == publicationId);
             return publication;
         }
 
