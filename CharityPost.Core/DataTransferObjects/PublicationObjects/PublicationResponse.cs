@@ -1,5 +1,6 @@
 ﻿using CharityPost.Core.Domain.Entities.IdentityEntities;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using CharityPost.Core.Helpers;
 
 namespace CharityPost.Core.DataTransferObjects.PublicationObjects
@@ -9,6 +10,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public Guid Id { get; set; }
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
+        public PublicationCategories PublicationCategory { get; set; }
         public DateTime PublishedDate { get; set; }
 
         public List<string> ImagesUrls { get; set; } = null!;
@@ -26,6 +28,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Id = publication.Id,
                 Title = publication.Title,
                 Description = publication.Description,
+                PublicationCategory = publication.PublicationCategory,
                 PublishedDate = publication.PublishedDate,
                 ImagesUrls = ImagesConverterHelper.ConvertImagesByteArraysToUrls(publication.Images)
             };

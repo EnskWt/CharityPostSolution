@@ -197,7 +197,8 @@ main {
     justify-content: center;
 }
 
-    .main__content__article__button a {
+    .main__content__article__button a,
+    .main__content__article__button button {
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         color: rgb(36, 36, 29);
@@ -212,7 +213,8 @@ main {
         text-decoration: none;
     }
 
-    .main__content__article__button a:hover {
+    .main__content__article__button a:hover,
+    .main__content__article__button button:hover {
         text-decoration: none;
     }
 
@@ -361,3 +363,93 @@ label {
 }
 
 /* end of post page formatting */
+
+/* Forms formatting */
+
+.form-container {
+    margin: auto;
+    width: 90%;
+    padding: 20px;
+}
+
+.form-input {
+    padding: 8px 10px;
+    font-size: 105%;
+    border-radius: 8px;
+    border: 1px solid #d0d0d0;
+    width: 100%;
+    transition: box-shadow 0.2s;
+}
+
+    .form-input:focus {
+        outline: none;
+        border: 1px solid #245eb0;
+        box-shadow: 0px 0px 4px 0px #1383a4;
+    }
+
+.form-select {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.form-textarea {
+    resize: none;
+}
+
+.form-label {
+    display: block;
+    font-size: 105%;
+    font-weight: bold;
+}
+
+/* Text formatting */
+
+.text-blue {
+    color: #0349a3;
+}
+
+.text-green {
+    color: #0a8438;
+}
+
+.text-red {
+    color: #ff0000;
+}
+
+.text-grey {
+    color: #929292;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-large {
+    font-size: 2.5em;
+    margin-top: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+a.link-hover:link {
+    padding: 5px;
+    border-radius: 9px;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+a.link-hover:hover {
+    background-color: #e5e5e5;
+}
+
+

@@ -103,7 +103,7 @@ namespace CharityPost.Presentation.Controllers
 
             await _signInManager.RefreshSignInAsync(user);
 
-            return RedirectToAction("Index", "Articles");
+            return RedirectToAction("Index", "Publications", new { area = "Publisher" });
         }
 
         [HttpGet]
@@ -113,7 +113,7 @@ namespace CharityPost.Presentation.Controllers
         {
             await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Index", "Articles");
+            return RedirectToAction("Index", "Publications");
         }
 
         private async Task CreateRoleIfNotExist(UserRoles role)

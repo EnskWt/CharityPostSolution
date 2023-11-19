@@ -8,13 +8,14 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace CharityPost.Presentation.Areas.Publisher.Controllers
 {
     [Area("Publisher")]
     [Route("/my-publications")]
     //[Authorize(Roles = "Publisher")]
-    [AllowAnonymous]
+    [AllowAnonymous] // for test purposes
     public class PublicationsController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -77,7 +78,12 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
             var command = new GetPublicationCommand(id);
             var result = await _mediator.Send(command);
 
-            return View(result);
+            if (result == null)
+            {
+                return RedirectToAction("Index", "Publications");
+            }
+
+            return View(result.ToPublicationUpdateRequest());
         }
 
         [HttpPost]

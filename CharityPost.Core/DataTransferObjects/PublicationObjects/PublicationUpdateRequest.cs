@@ -36,4 +36,18 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
             };
         }
     }
+
+    public static class PublicationUpdateRequestExtensions
+    {
+        public static PublicationUpdateRequest ToPublicationUpdateRequest(this PublicationResponse publicationResponse)
+        {
+            return new PublicationUpdateRequest
+            {
+                Id = publicationResponse.Id,
+                Title = publicationResponse.Title,
+                Description = publicationResponse.Description,
+                PublicationCategory = publicationResponse.PublicationCategory
+            };
+        }
+    }
 }

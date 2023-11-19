@@ -1,0 +1,46 @@
+﻿@model PublicationUpdateRequest
+
+@{
+    ViewBag.Title = "Edit publication";
+}
+
+<div class="form-container">
+
+    <a asp-controller="Publications" asp-action="Index" class="link-hover">Back to my publications</a>
+    <h2 class="text-large">Edit publication</h2>
+
+    <div class="main__content__article">
+
+        <form asp-controller="Publications" asp-action="EditPublication" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" asp-for="Id" />
+
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" class="form-input" />
+            <span asp-validation-for="Title" class="text-red"></span>
+
+            <label asp-for="Description" class="form-label">Description</label>
+            <textarea asp-for="Description" class="form-input form-textarea"></textarea>
+            <span asp-validation-for="Description" class="text-red"></span>
+
+            <label asp-for="PublicationCategory" class="form-label pt">Category</label>
+            <select asp-for="PublicationCategory" asp-items="Html.GetEnumSelectList<PublicationCategories>()" class="form-input form-select">
+                <option value="">Select category</option>
+            </select>
+            <span asp-validation-for="PublicationCategory" class="text-red"></span>
+
+            <label asp-for="Images" class="form-label pt">Images</label>
+            <input asp-for="Images" type="file" multiple class="form-input" />
+            <span asp-validation-for="Images" class="text-red"></span>
+
+            <div class="main__content__article__button">
+                <button class="button-background-blue">Create publication</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+<partial name="_ClientSideValidationScriptsPartial"></partial>
