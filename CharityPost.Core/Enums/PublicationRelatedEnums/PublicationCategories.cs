@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharityPost.Core.Enums
+namespace CharityPost.Core.Enums.PublicationRelatedEnums
 {
-    public enum FilterOptions
+    public enum PublicationCategories
     {
-        None,
-        Author,
-        Category
+        People,
+        Animals
     }
 }

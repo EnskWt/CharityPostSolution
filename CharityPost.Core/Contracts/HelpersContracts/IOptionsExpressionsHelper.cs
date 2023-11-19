@@ -1,5 +1,5 @@
 ﻿using CharityPost.Core.Domain.Entities.PublicationEntities;
-using CharityPost.Core.Enums;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,6 @@ namespace CharityPost.Core.Contracts.HelpersContracts
     public interface IOptionsExpressionsHelper
     {
         string GetSortExpression(SortOptions sortOption, SortOrderOptions sortOrderOption);
-        Expression<Func<Publication, bool>> GetFilterExpression(List<FilterOptions> filterOptions, string filterValue);
+        Expression<Func<Publication, bool>> GetFilterExpression(Dictionary<FilterOptions, string> filters);
     }
 }

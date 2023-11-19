@@ -1,5 +1,5 @@
 ﻿using CharityPost.Core.DataTransferObjects.PublicationObjects;
-using CharityPost.Core.Enums;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -13,19 +13,17 @@ namespace CharityPost.Core.Services.Commands.PublicationsCommands
     {
         public SortOptions SortOption { get; set; } = SortOptions.Date;
         public SortOrderOptions SortOrderOptions { get; set; } = SortOrderOptions.ASC;
-        public List<FilterOptions> FilterOptions { get; set; } = new List<FilterOptions>();
-        public string FilterValue { get; set; } = null!;
+        public Dictionary<FilterOptions, string> Filters { get; set; } = new Dictionary<FilterOptions, string>();
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
 
         public GetPublicationsCommand() { }
 
-        public GetPublicationsCommand(SortOptions sortOption, SortOrderOptions sortOrderOption, List<FilterOptions>? filterOptions, string? filterValue, int pageNumber, int pageSize)
+        public GetPublicationsCommand(SortOptions sortOption, SortOrderOptions sortOrderOption, Dictionary<FilterOptions, string> filters, int pageNumber, int pageSize)
         {
             SortOption = sortOption;
             SortOrderOptions = sortOrderOption;
-            FilterOptions = filterOptions ?? new List<FilterOptions>();
-            FilterValue = filterValue ?? string.Empty;
+            Filters = filters;
             PageNumber = pageNumber;
             PageSize = pageSize;
         }

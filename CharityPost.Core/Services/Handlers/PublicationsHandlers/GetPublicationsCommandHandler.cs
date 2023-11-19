@@ -33,7 +33,7 @@ namespace CharityPost.Core.Services.Handlers.PublicationsHandlers
             }
 
             string sortExpression = _optionsExpressionsHelper.GetSortExpression(request.SortOption, request.SortOrderOptions);
-            Expression<Func<Publication, bool>> filterExpression = _optionsExpressionsHelper.GetFilterExpression(request.FilterOptions, request.FilterValue);
+            Expression<Func<Publication, bool>> filterExpression = _optionsExpressionsHelper.GetFilterExpression(request.Filters);
             
             var publications = await _publicationsRepository.GetAllPublications(sortExpression, filterExpression, request.PageNumber, request.PageSize);
             return publications.Select(p => p.ToPublicationResponse()).ToList();

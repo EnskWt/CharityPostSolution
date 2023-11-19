@@ -1,5 +1,5 @@
 ﻿using CharityPost.Core.Domain.Entities.IdentityEntities;
-using CharityPost.Core.Enums;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

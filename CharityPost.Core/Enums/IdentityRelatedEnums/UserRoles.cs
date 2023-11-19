@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharityPost.Core.Enums
+namespace CharityPost.Core.Enums.IdentityRelatedEnums
 {
-    public enum SortOptions
+    public enum UserRoles
     {
-        Date
+        User,
+        Publisher,
+        Admin
     }
 }

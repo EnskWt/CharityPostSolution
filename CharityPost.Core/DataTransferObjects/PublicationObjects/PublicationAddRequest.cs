@@ -1,6 +1,6 @@
 ﻿using CharityPost.Core.DataTransferObjects.PublicationObjectsContracts;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
-using CharityPost.Core.Enums;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using CharityPost.Core.Helpers;
 using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;

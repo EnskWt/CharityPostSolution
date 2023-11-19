@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CharityPost.Core.Enums
+namespace CharityPost.Core.Enums.PublicationRelatedEnums
 {
-    public enum PublicationCategories
+    public enum SortOrderOptions
     {
-        People,
-        Animals
+        ASC,
+        DESC
     }
 }

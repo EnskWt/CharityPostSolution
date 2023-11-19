@@ -1,6 +1,6 @@
 ﻿using CharityPost.Core.Contracts.HelpersContracts;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
-using CharityPost.Core.Enums;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using LinqKit;
 using System;
 using System.Collections.Generic;
@@ -26,9 +26,20 @@ namespace CharityPost.Core.Helpers
 
             _filters = new Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>>
             {
-                { FilterOptions.None , (value) => (publication) => true },
-                //{ FilterOptions.Author, (value) => (publication) => publication.Author == value}
-                { FilterOptions.Category, (value) => (publication) => publication.PublicationCategory == Enum.Parse<PublicationCategories>(value) }      
+                { FilterOptions.Author, (value) =>
+                    {
+                        Guid authorId;
+                        var parseResult = Guid.TryParse(value, out authorId);
+                        return (publication) => publication.AuthorId == authorId;
+                    }
+                },
+                { FilterOptions.Category, (value) =>
+                    {
+                        PublicationCategories category;
+                        var parseResult = Enum.TryParse(value, out category);
+                        return (publication) => publication.PublicationCategory == category;
+                    }
+                }
             };
         }
 
@@ -38,17 +49,16 @@ namespace CharityPost.Core.Helpers
             return expression;
         }
 
-        public Expression<Func<Publication, bool>> GetFilterExpression(List<FilterOptions> filterOptions, string filterValue)
+        public Expression<Func<Publication, bool>> GetFilterExpression(Dictionary<FilterOptions, string> filters)
         {
             var predicateExpression = PredicateBuilder.New<Publication>(true);
 
-            foreach (var filterOption in filterOptions)
+            foreach (var filter in filters)
             {
-                if (filterOption == FilterOptions.None)
+                if (_filters.ContainsKey(filter.Key))
                 {
-                    break;
+                    predicateExpression = predicateExpression.And(_filters[filter.Key](filter.Value));
                 }
-                predicateExpression = predicateExpression.And(_filters[filterOption](filterValue));
             }
 
             return predicateExpression;

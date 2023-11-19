@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PublicationResponse>
+
+@{
+    ViewBag.Title = "My publications";
+}
+
+<div class="main__content">
+    <div class="main__content__sidebar">
+        <div class="main__content__article__button">
+            <a asp-controller="Publications" asp-action="Create" class="button-background-green">Create new publication</a>
+        </div>
+    </div>
+
+    <div class="main__content__articles">
+        @foreach (var publication in Model)
+        {
+            <div class="main__content__article">
+
+                <partial name="_ImageCarouselPartial" model="publication.ImagesUrls"></partial>
+
+                <div class="main__content__article__title">
+                    <h2>@publication.Title</h2>
+                </div>
+
+                <div class="main__content__article__description">
+                    <p>@publication.Description</p>
+                </div>
+
+                @*not implemented yet*@
+                @*<div class="main__content__article__progress">
+
+                    <div class="main__content__article__progress__bar">
+                        <div class="main__content__article__progress__bar__fill"></div>
+                    </div>
+                    <div class="main__content__article__progress__bar__title">
+                        Raised 1000$ of 5000$ required
+                    </div>
+
+                </div>*@
+
+                <div class="main__content__article__button button-background-orange">
+                    <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id">Edit</a>
+                </div>
+                <div class="main__content__article__button button-background-blue">
+                    <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id">Publication</a>
+                </div>
+                <div class="main__content__article__button button-background-red">
+                    <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>

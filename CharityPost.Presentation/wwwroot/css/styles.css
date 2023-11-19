@@ -103,6 +103,27 @@ main {
     padding-top: 15vh;
 }
 
+.main__content {
+    display: flex;
+}
+
+.main__content__sidebar {
+    width: 20%;
+    padding: 30px;
+    margin-left: 20px;
+    border-radius: 20px;
+    border-color: rgb(255, 255, 255);
+    background-color: #fff;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0px 0px 10px rgba(40, 132, 132, 0.5);
+    margin-right: 20px;
+}
+
+.main__content__articles {
+    width: 80%;
+}
+
 .main__content__article {
     /* margin: 300px; */
     margin: 70px auto;
@@ -180,7 +201,6 @@ main {
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         color: rgb(36, 36, 29);
-        background-color: rgb(97, 137, 240);
         text-align: center;
         padding: 10px 20px;
         margin: 5px;
@@ -192,9 +212,41 @@ main {
         text-decoration: none;
     }
 
-        .main__content__article__button a:hover {
-            background-color: rgb(53, 119, 218);
-        }
+    .main__content__article__button a:hover {
+        text-decoration: none;
+    }
+
+.button-background-blue {
+    background-color: rgb(97, 137, 240);
+}
+
+    .button-background-blue:hover {
+        background-color: rgb(53, 119, 218);
+    }
+
+.button-background-orange {
+    background-color: rgb(255,165,0);
+}
+
+    .button-background-orange:hover {
+        background-color: rgb(255,215,0)
+    }
+
+.button-background-red {
+    background-color: rgb(255,0,0);
+}
+
+    .button-background-red:hover {
+        background-color: rgb(255,69,0);
+    }
+
+.button-background-green {
+    background-color: rgb(50,205,50);
+}
+
+    .button-background-green:hover {
+        background-color: rgb(34,139,34);
+    }
 
 /* end of article formatting */
 

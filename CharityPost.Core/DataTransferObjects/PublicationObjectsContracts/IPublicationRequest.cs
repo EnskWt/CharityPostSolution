@@ -1,4 +1,5 @@
 ﻿using CharityPost.Core.Domain.Entities.PublicationEntities;
+using CharityPost.Core.Enums.PublicationRelatedEnums;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjectsContracts
     {
         string Title { get; set; }
         string Description { get; set; }
+        PublicationCategories PublicationCategory { get; set; }
         List<IFormFile> Images { get; set; }
         Publication ToPublication();
     }

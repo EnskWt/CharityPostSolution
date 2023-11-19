@@ -30,6 +30,11 @@ namespace CharityPost.Presentation.StartupExtensions
 
             services.AddAuthorization(options =>
             {
+                options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                    .RequireAuthenticatedUser()
+                    .Build();
+
+
                 options.AddPolicy("NotAuthorized", policy =>
                 {
                     policy.RequireAssertion(context =>
@@ -41,8 +46,8 @@ namespace CharityPost.Presentation.StartupExtensions
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.LoginPath = "/account/login";
-                options.AccessDeniedPath = "/account/accessdenied";
+                options.LoginPath = "/auth/login";
+                options.AccessDeniedPath = "/auth/accessdenied";
             });
 
             return services;
