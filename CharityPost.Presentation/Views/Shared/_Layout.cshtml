@@ -16,7 +16,7 @@
             </div>
             <div class="header_right">
                 <div class="header_search">
-                    <form asp-area="" asp-controller="Publications" asp-action="Index" method="get">
+                    <form id="save-query-form" asp-area="" asp-controller="Publications" asp-action="Index" method="get">
                         <input type="text" name="filters[Title]" placeholder="Search for...">
                         <button>Find</button>
                     </form>
@@ -61,7 +61,7 @@
     @RenderSection("Scripts", required: false)
 
     <script>
-        document.querySelector('form').addEventListener('submit', function (e) {
+        document.querySelectorAll('#save-query-form').addEventListener('submit', function (e) {
             e.preventDefault();
             var urlParams = new URLSearchParams(window.location.search);
             urlParams.forEach(function (value, key) {
