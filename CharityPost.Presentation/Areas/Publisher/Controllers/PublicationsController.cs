@@ -3,19 +3,19 @@ using CharityPost.Core.DataTransferObjects.PublicationObjects;
 using CharityPost.Core.Domain.Entities.IdentityEntities;
 using CharityPost.Core.Enums.PublicationRelatedEnums;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
+using CharityPost.Presentation.Filters.ActionFilters;
 using CharityPost.Presentation.ModelBinders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace CharityPost.Presentation.Areas.Publisher.Controllers
 {
     [Area("Publisher")]
     [Route("/my-publications")]
-    //[Authorize(Roles = "Publisher")]
-    [AllowAnonymous] // for test purposes
+    [Authorize(Roles = "Publisher")]
+    /*[AllowAnonymous]*/  /*for test purposes*/
     public class PublicationsController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -32,7 +32,8 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
         }
 
         // add action filter that add user id to filters (using filter context)
-        // prevent inserting another publisher id to filters
+        // prevent inserting another publisher id to filters !!!!!!!!!
+        [TypeFilter(typeof(AuthorFilterOptionActionFilter))]
         [Route("/my-publications")]
         public async Task<IActionResult> Index(
             [FromQuery] SortOptions sortOption = SortOptions.Date,

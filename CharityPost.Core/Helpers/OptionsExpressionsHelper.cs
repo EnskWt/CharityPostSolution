@@ -39,6 +39,11 @@ namespace CharityPost.Core.Helpers
                         var parseResult = Enum.TryParse(value, out category);
                         return (publication) => publication.PublicationCategory == category;
                     }
+                },
+                { FilterOptions.Title, (value) =>
+                    {
+                        return (publication) => publication.Title.Contains(value.ToLower());
+                    }
                 }
             };
         }

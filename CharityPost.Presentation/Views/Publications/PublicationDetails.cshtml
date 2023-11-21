@@ -12,11 +12,6 @@
         <h2>@Model.Title</h2>
     </div>
 
-    @*useless*@
-    @*<div class="main__content__article__description">
-        <p>@Model.Description</p>
-    </div>*@
-
     <div class="post_description">
         <h3 class="misc_info">Description</h3>
         <p class="misc2">@Model.Description</p>
@@ -37,17 +32,22 @@
         <p class="misc2">12.12.2012</p>
     </div>*@
 
-    @*<div class="main__content__article__progress">
+    <div class="main__content__article__progress">
+
         <div class="main__content__article__progress__bar">
-            <div class="main__content__article__progress__bar__fill"></div>
+            <div class="main__content__article__progress__bar__fill" style="width: @Model.Progress%;"></div>
         </div>
         <div class="main__content__article__progress__bar__title">
-            Raised 1000$ of 5000$ required
+            Raised @Model.CurrentMoney$ of @Model.TargetMoney$ required
         </div>
 
-    </div>*@
+    </div>
 
     <div class="main__content__article__button">
         <a class="button-background-blue">Donate</a>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_BootstrapScriptsPartial"></partial>
+}

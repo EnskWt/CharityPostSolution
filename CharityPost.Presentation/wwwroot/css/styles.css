@@ -20,6 +20,7 @@ body {
 /* HEADER ONLY BELOW */
 .header {
     position: fixed;
+    z-index: 10;
     height: 12vh;
     width: 100%;
     top: 0;
@@ -61,21 +62,20 @@ body {
     .header_search input {
         padding: 5px;
         border-radius: 20px;
+        border-color: white;
+        border-style: solid;
+        border-width: 1px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
     }
 
-        .header_search input[type=text] {
-            border-color: white;
-            border-style: solid;
-            border-width: 1px;
-            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .header_search input[type=submit] {
-            background-color: rgb(161, 186, 255);
-            padding: 5px 10px;
-            border: none;
-            border-bottom: 1px solid rgb(0, 49, 84);
-        }
+    .header_search button {
+        padding: 5px;
+        border-radius: 20px;
+        background-color: rgb(161, 186, 255);
+        padding: 5px 10px;
+        border: none;
+        border-bottom: 1px solid rgb(0, 49, 84);
+    }
 
 .header_auth {
     margin-left: 10px;
@@ -118,6 +118,7 @@ main {
     border-width: 1px;
     box-shadow: 0px 0px 10px rgba(40, 132, 132, 0.5);
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .main__content__articles {
@@ -177,7 +178,6 @@ main {
 
 .main__content__article__progress__bar__fill {
     height: 100%;
-    width: 20%;
     background-color: rgb(53, 119, 218);
     border-radius: 20px;
 }
@@ -201,7 +201,7 @@ main {
     .main__content__article__button button {
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
-        color: rgb(36, 36, 29);
+        color: rgb(255, 255, 255);
         text-align: center;
         padding: 10px 20px;
         margin: 5px;
@@ -213,10 +213,11 @@ main {
         text-decoration: none;
     }
 
-    .main__content__article__button a:hover,
-    .main__content__article__button button:hover {
-        text-decoration: none;
-    }
+        .main__content__article__button a:hover,
+        .main__content__article__button button:hover {
+            text-decoration: none;
+            color: rgb(245, 245, 245);
+        }
 
 .button-background-blue {
     background-color: rgb(97, 137, 240);
@@ -288,55 +289,18 @@ footer {
 
 /* AUTH FORMATTING BELOW */
 
-fieldset {
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-}
-
-legend {
-    font-size: 20px;
-    font-weight: bold;
-    color: rgb(36, 36, 29);
-    text-align: center;
-    padding: 10px;
-}
-
-label {
-    font-size: 16px;
-    font-weight: bold;
-    color: rgb(36, 36, 29);
-    text-align: center;
-    padding: 10px;
-}
-
-.auth_field input[type=text], input[type=password] {
-    width: 50%;
-    padding: 10px;
-    margin: 5px 0;
+.auth__box {
+    margin: 70px auto;
+    width: 35%; 
+    padding: 30px;
     border-radius: 20px;
-    border-color: white;
+    border-color: rgb(255, 255, 255);
+    background-color: #fff;
     border-style: solid;
     border-width: 1px;
-    box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
+    box-shadow: 0px 0px 10px rgba(40, 132, 132, 0.5);
 }
 
-.auth_field input[type=submit] {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    color: rgb(36, 36, 29);
-    background-color: rgb(97, 137, 240);
-    text-align: center;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 20px;
-    /* border-color: rgb(255, 255, 255); */
-    border-style: none;
-    border-width: 1px;
-    box-shadow: 0px 0px 5px rgba(123, 123, 123, 0.5);
-}
 /* end of auth formatting */
 
 /*  SUCCESS PAGE FORMATTING BELOW */
@@ -375,10 +339,11 @@ label {
 .form-input {
     padding: 8px 10px;
     font-size: 105%;
-    border-radius: 8px;
+    border-radius: 16px;
     border: 1px solid #d0d0d0;
     width: 100%;
     transition: box-shadow 0.2s;
+    display: block;
 }
 
     .form-input:focus {
@@ -400,8 +365,13 @@ label {
 
 .form-label {
     display: block;
+    text-align: center;
     font-size: 105%;
     font-weight: bold;
+}
+
+.pt {
+    padding-top: 10px;
 }
 
 /* Text formatting */
@@ -451,5 +421,7 @@ a.link-hover:link {
 a.link-hover:hover {
     background-color: #e5e5e5;
 }
+
+/* end text formatting */
 
 

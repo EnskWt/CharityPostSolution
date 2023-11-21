@@ -23,6 +23,9 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public PublicationCategories PublicationCategory { get; set; }
 
         [Required]
+        public int TargetMoney { get; set; }
+
+        [Required]
         public List<IFormFile> Images { get; set; } = null!;
 
         public Publication ToPublication()
@@ -32,6 +35,8 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Id = Id,
                 Title = Title,
                 Description = Description,
+                TargetMoney = TargetMoney,
+                PublicationCategory = PublicationCategory,
                 Images = ImagesConverterHelper.ConvertImagesToByteArrays(Images)
             };
         }
@@ -46,6 +51,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Id = publicationResponse.Id,
                 Title = publicationResponse.Title,
                 Description = publicationResponse.Description,
+                TargetMoney = publicationResponse.TargetMoney,
                 PublicationCategory = publicationResponse.PublicationCategory
             };
         }

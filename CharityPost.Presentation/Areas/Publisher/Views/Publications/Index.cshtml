@@ -26,28 +26,25 @@
                     <p>@publication.Description</p>
                 </div>
 
-                @*not implemented yet*@
-                @*<div class="main__content__article__progress">
+                <div class="main__content__article__progress">
 
                     <div class="main__content__article__progress__bar">
-                        <div class="main__content__article__progress__bar__fill"></div>
+                        <div class="main__content__article__progress__bar__fill" style="width: @publication.Progress%;"></div>
                     </div>
                     <div class="main__content__article__progress__bar__title">
-                        Raised 1000$ of 5000$ required
+                        Raised @publication.CurrentMoney$ of @publication.TargetMoney$ required
                     </div>
 
-                </div>*@
+                </div>
 
                 <div class="main__content__article__button">
                     <a asp-area="Publisher" asp-controller="Publications" asp-action="EditPublication" asp-route-id="@publication.Id" class="button-background-orange">Edit</a>
-                </div>
-                <div class="main__content__article__button">
                     <a asp-controller="Publications" asp-action="PublicationDetails" asp-route-id="@publication.Id" class="button-background-blue">Publication</a>
-                </div>
-                <div class="main__content__article__button">
                     <a asp-area="Publisher" asp-controller="Publications" asp-action="DeletePublication" asp-route-id="@publication.Id" class="button-background-red">Delete</a>
                 </div>
             </div>
         }
     </div>
 </div>
+
+<partial name="_BootstrapScriptsPartial"></partial>

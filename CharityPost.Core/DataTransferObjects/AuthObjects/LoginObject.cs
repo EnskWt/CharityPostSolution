@@ -10,7 +10,7 @@ namespace CharityPost.Core.DataTransferObjects.AuthObjects
     public class LoginObject
     {
         [Required(ErrorMessage = "Username can't be blank.")]
-        public string Username { get; set; } = null!;
+        public string UserName { get; set; } = null!;
 
         [Required(ErrorMessage = "Password can't be blank.")]
         [DataType(DataType.Password)]

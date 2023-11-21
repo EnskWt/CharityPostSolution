@@ -8,8 +8,8 @@ namespace CharityPost.Core.Enums.PublicationRelatedEnums
 {
     public enum FilterOptions
     {
-        None,
         Author,
-        Category
+        Category,
+        Title
     }
 }

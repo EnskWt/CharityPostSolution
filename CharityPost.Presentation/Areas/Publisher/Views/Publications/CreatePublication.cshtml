@@ -13,19 +13,23 @@
 
         <form asp-controller="Publications" asp-action="CreatePublication" method="post" enctype="multipart/form-data">
 
-            <label asp-for="Title" class="form-label">Title</label>
+            <label asp-for="Title" class="form-label pt">Title</label>
             <input asp-for="Title" class="form-input" />
             <span asp-validation-for="Title" class="text-red"></span>
 
-            <label asp-for="Description" class="form-label">Description</label>
+            <label asp-for="Description" class="form-label pt">Description</label>
             <textarea asp-for="Description" class="form-input form-textarea"></textarea>
             <span asp-validation-for="Description" class="text-red"></span>
 
-            <label asp-for="PublicationCategory" class="form-label pt">Category</label>
+            <label asp-for="PublicationCategory" class="form-label block pt">Category</label>
             <select asp-for="PublicationCategory" asp-items="Html.GetEnumSelectList<PublicationCategories>()" class="form-input form-select">
                 <option value="">Select category</option>
             </select>
             <span asp-validation-for="PublicationCategory" class="text-red"></span>
+
+            <label asp-for="TargetMoney" class="form-label pt">Target money</label>
+            <input asp-for="TargetMoney" class="form-input" />
+            <span asp-validation-for="TargetMoney" class="text-red"></span>
 
             <label asp-for="Images" class="form-label pt">Images</label>
             <input asp-for="Images" type="file" multiple class="form-input" />
@@ -34,7 +38,7 @@
             <input type="hidden" asp-for="AuthorId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" />
 
             <div class="main__content__article__button">
-                <button class="button-background-blue">Create publication</button>
+                <button class="button-background-blue" type="submit">Create publication</button>
             </div>
 
         </form>
@@ -43,4 +47,6 @@
 
 </div>
 
-<partial name="_ClientSideValidationScriptsPartial"></partial>
+@section Scripts {
+    <partial name="_ClientSideValidationScriptsPartial"></partial>
+}

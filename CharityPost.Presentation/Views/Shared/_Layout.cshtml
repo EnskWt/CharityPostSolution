@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
 <head>
@@ -12,19 +12,33 @@
     <header>
         <div class="header">
             <div class="header_logo">
-                <a asp-controller="Publications" asp-action="Index"><img src="/img/logo_portr.jpg" alt="Logotype"></a>
+                <a asp-area="" asp-controller="Publications" asp-action="Index"><img src="/img/logo_portr.jpg" alt="Logotype"></a>
             </div>
             <div class="header_right">
                 <div class="header_search">
-                    <form action="index.php" method="post">
-                        @*change it using asp action Index with parameters*@
-                        <input type="text" name="search" placeholder="Search for...">
-                        <input type="submit" name="submit" value="Find">
+                    <form asp-area="" asp-controller="Publications" asp-action="Index" method="get">
+                        <input type="text" name="filters[Title]" placeholder="Search for...">
+                        <button>Find</button>
                     </form>
                 </div>
                 <div class="header_auth">
-                    <a asp-controller="Auth" asp-action="Login">Sign in</a>
-                    <a asp-controller="Auth" asp-action="Register">Sign up</a>
+                    @if (User.Identity!.IsAuthenticated)
+                    {
+                        @if (User.IsInRole(UserRoles.Publisher.ToString()))
+                        {
+                            <a asp-area="Publisher" asp-controller="Publications" asp-action="Index">Publications</a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="BecomePublisher">Become publisher</a>
+                        }
+                        <a asp-controller="Auth" asp-action="Logout">Sign out</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Auth" asp-action="Login">Sign in</a>
+                        <a asp-controller="Auth" asp-action="Register">Sign up</a>
+                    }
                 </div>
             </div>
         </div>
@@ -45,5 +59,22 @@
     </footer>
 
     @RenderSection("Scripts", required: false)
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var urlParams = new URLSearchParams(window.location.search);
+            urlParams.forEach(function (value, key) {
+                if (!document.querySelector('input[name="' + key + '"]')) {
+                    var hiddenField = document.createElement('input');
+                    hiddenField.type = 'hidden';
+                    hiddenField.name = key;
+                    hiddenField.value = value;
+                    this.appendChild(hiddenField);
+                }
+            }, this);
+            this.submit();
+        });
+    </script>
 </body>
 </html>

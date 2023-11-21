@@ -22,6 +22,10 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public DateTime PublishedDate { get; set; } = DateTime.UtcNow;
 
         [Required]
+        public int TargetMoney { get; set; }
+
+        [Required]
+        [DataType(DataType.Upload)]
         public List<IFormFile> Images { get; set; } = null!;
 
         [Required]
@@ -35,6 +39,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Description = Description,
                 PublicationCategory = PublicationCategory,
                 PublishedDate = PublishedDate,
+                TargetMoney = TargetMoney,
                 Images = ImagesConverterHelper.ConvertImagesToByteArrays(Images),
                 AuthorId = AuthorId
             };

@@ -47,6 +47,8 @@ namespace CharityPost.Infrastructure.Repositories
         public async Task<List<Publication>> GetAllPublications(string sort, Expression<Func<Publication, bool>> filter, int pageNumber, int pageSize)
         {
             var publications = await _db.Publications
+                .Include(p => p.Author)
+                .Include(p => p.Images)
                 .Where(filter)
                 .OrderBy(sort)
                 .Skip((pageNumber - 1) * pageSize)
@@ -59,6 +61,7 @@ namespace CharityPost.Infrastructure.Repositories
         {
             var publication = await _db.Publications
                 .Include(p => p.Author)
+                .Include(p => p.Images)
                 .FirstOrDefaultAsync(p => p.Id == publicationId);
             return publication;
         }

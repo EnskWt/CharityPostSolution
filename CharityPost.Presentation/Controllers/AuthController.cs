@@ -74,7 +74,7 @@ namespace CharityPost.Presentation.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginObject.Username, loginObject.Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(loginObject.UserName, loginObject.Password, false, false);
 
                 if (result.Succeeded)
                 {
@@ -89,7 +89,7 @@ namespace CharityPost.Presentation.Controllers
 
         [HttpGet]
         [Route("new-author")]
-        [Authorize(Roles = "User")]
+        [Authorize]
         public async Task<IActionResult> BecomePublisher()
         {
             var user = await _userManager.GetUserAsync(User);

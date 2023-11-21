@@ -13,6 +13,10 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public PublicationCategories PublicationCategory { get; set; }
         public DateTime PublishedDate { get; set; }
 
+        public int CurrentMoney { get; set; }
+        public int TargetMoney { get; set; }
+        public double Progress => CurrentMoney / TargetMoney * 100;
+
         public List<string> ImagesUrls { get; set; } = null!;
 
         public Guid AuthorId { get; set; }
@@ -30,7 +34,11 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
                 Description = publication.Description,
                 PublicationCategory = publication.PublicationCategory,
                 PublishedDate = publication.PublishedDate,
-                ImagesUrls = ImagesConverterHelper.ConvertImagesByteArraysToUrls(publication.Images)
+                CurrentMoney = publication.CurrentMoney,
+                TargetMoney = publication.TargetMoney,
+                ImagesUrls = ImagesConverterHelper.ConvertImagesByteArraysToUrls(publication.Images),
+                AuthorId = publication.AuthorId,
+                Author = publication.Author
             };
         }
     }

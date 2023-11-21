@@ -1,0 +1,38 @@
+﻿@model LoginObject
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="form-container">
+
+    <a asp-controller="Auth" asp-action="Register" class="link-hover">New member? Register!</a>
+    <h2 class="text-large">Login</h2>
+
+    <div class="auth__box">
+
+        <form asp-controller="Auth" asp-action="Login" method="post">
+
+            <label asp-for="UserName" class="form-label pt">Username</label>
+            <input asp-for="UserName" class="form-input form-textarea" />
+            <span asp-validation-for="UserName" class="text-red"></span>
+
+            <label asp-for="Password" class="form-label pt">Password</label>
+            <input asp-for="Password" class="form-input form-textarea" />
+            <span asp-validation-for="Password" class="text-red"></span>
+
+            <div class="main__content__article__button">
+                <button class="button-background-blue" type="submit">Login</button>
+            </div>
+
+            <div asp-validation-summary="All" class="text-red"></div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ClientSideValidationScriptsPartial"></partial>
+}
