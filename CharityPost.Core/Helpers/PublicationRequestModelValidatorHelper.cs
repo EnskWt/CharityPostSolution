@@ -1,4 +1,5 @@
 ﻿using CharityPost.Core.Contracts.HelpersContracts;
+using CharityPost.Core.DataTransferObjects.PublicationObjectsContracts;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace CharityPost.Core.Helpers
 {
-    public class PublicationModelValidatorHelper : IModelValidatorHelper<Publication>
+    public class PublicationRequestModelValidatorHelper : IModelValidatorHelper<IPublicationRequest>
     {
-        public Task ModelValidation(Publication model)
+        public Task ModelValidation(IPublicationRequest model)
         {
             ValidationContext context = new ValidationContext(model);
             List<ValidationResult> results = new List<ValidationResult>();

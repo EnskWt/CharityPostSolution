@@ -57,6 +57,7 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(ModelStateCheckActionFilter), Arguments = new object[] { typeof(PublicationsController), "publicationRequest" })]
         [Route("new-publication")]
         public async Task<IActionResult> CreatePublication(PublicationAddRequest publicationRequest)
         {
@@ -88,6 +89,7 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
         }
 
         [HttpPost]
+        [TypeFilter(typeof(ModelStateCheckActionFilter), Arguments = new object[] { typeof(PublicationsController), "publicationRequest" })]
         [Route("edit-publication/{id}")]
         public async Task<IActionResult> EditPublication(PublicationUpdateRequest publicationRequest)
         {

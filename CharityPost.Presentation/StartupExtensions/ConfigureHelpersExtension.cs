@@ -1,4 +1,5 @@
 ﻿using CharityPost.Core.Contracts.HelpersContracts;
+using CharityPost.Core.DataTransferObjects.PublicationObjectsContracts;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
 using CharityPost.Core.Helpers;
 
@@ -10,7 +11,7 @@ namespace CharityPost.Presentation.StartupExtensions
         {
             services.AddScoped<IOptionsExpressionsHelper, OptionsExpressionsHelper>();
             services.AddScoped<IPublicationsContextValidatorHelper, PublicationsContextValidatorHelper>();
-            services.AddScoped<IModelValidatorHelper<Publication>, PublicationModelValidatorHelper>();
+            services.AddScoped<IModelValidatorHelper<IPublicationRequest>, PublicationRequestModelValidatorHelper>();
 
             return services;
         }

@@ -1,6 +1,7 @@
 ﻿using CharityPost.Core.DataTransferObjects.AuthObjects;
 using CharityPost.Core.Domain.Entities.IdentityEntities;
 using CharityPost.Core.Enums.IdentityRelatedEnums;
+using CharityPost.Presentation.Filters.ActionFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -32,28 +33,26 @@ namespace CharityPost.Presentation.Controllers
 
         [HttpPost]
         [Authorize(Policy = "NotAuthorized")]
+        [TypeFilter(typeof(ModelStateCheckActionFilter), Arguments = new object[] { typeof(AuthController), "registerObject" })]
         [Route("register")]
         public async Task<IActionResult> Register(RegisterObject registerObject)
         {
-            if (ModelState.IsValid)
+            var user = registerObject.ToApplicationUser();
+
+            var result = await _userManager.CreateAsync(user, registerObject.Password);
+
+            if (result.Succeeded)
             {
-                var user = registerObject.ToApplicationUser();
+                await _signInManager.SignInAsync(user, isPersistent: false);
 
-                var result = await _userManager.CreateAsync(user, registerObject.Password);
+                await AttachRoleToUser(user, UserRoles.User);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "Publications");
+            }
 
-                    await AttachRoleToUser(user, UserRoles.User);
-
-                    return RedirectToAction("Index", "Publications");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("RegisterError", error.Description);
-                }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("RegisterError", error.Description);
             }
 
             return View(registerObject);
@@ -69,20 +68,18 @@ namespace CharityPost.Presentation.Controllers
 
         [HttpPost]
         [Authorize(Policy = "NotAuthorized")]
+        [TypeFilter(typeof(ModelStateCheckActionFilter), Arguments = new object[] { typeof(AuthController), "loginObject" })]
         [Route("login")]
         public async Task<IActionResult> Login(LoginObject loginObject)
         {
-            if (ModelState.IsValid)
+            var result = await _signInManager.PasswordSignInAsync(loginObject.UserName, loginObject.Password, false, false);
+
+            if (result.Succeeded)
             {
-                var result = await _signInManager.PasswordSignInAsync(loginObject.UserName, loginObject.Password, false, false);
-
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Publications");
-                }
-
-                ModelState.AddModelError("LoginError", "Invalid login attempt");
+                return RedirectToAction("Index", "Publications");
             }
+
+            ModelState.AddModelError("LoginError", "Invalid login attempt");
 
             return View(loginObject);
         }

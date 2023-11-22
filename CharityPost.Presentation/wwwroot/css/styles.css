@@ -91,6 +91,11 @@ body {
         text-decoration: none;
     }
 
+        .header_auth > a:hover {
+            color: rgb(245, 245, 245);
+            text-decoration: none;
+        }
+
         .header_auth > a:nth-of-type(1) {
             padding-right: 10px;
         }
@@ -109,6 +114,7 @@ main {
 
 .main__content__sidebar {
     width: 20%;
+    height: 500px;
     padding: 30px;
     margin-left: 20px;
     border-radius: 20px;
@@ -118,7 +124,6 @@ main {
     border-width: 1px;
     box-shadow: 0px 0px 10px rgba(40, 132, 132, 0.5);
     margin-right: 20px;
-    margin-bottom: 20px;
 }
 
 .main__content__articles {
