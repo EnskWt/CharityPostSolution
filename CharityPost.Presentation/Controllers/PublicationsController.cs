@@ -1,5 +1,6 @@
 ﻿using CharityPost.Core.Enums.PublicationRelatedEnums;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
+using CharityPost.Presentation.Filters.ActionFilters;
 using CharityPost.Presentation.ModelBinders;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -17,7 +18,9 @@ namespace CharityPost.Presentation.Controllers
             _mediator = mediator;
         }
 
+        [TypeFilter(typeof(RequestQueryParametersActionFilter))]
         [Route("/")]
+        [Route("/publications")]
         public async Task<IActionResult> Index(
             [FromQuery] SortOptions sortOption = SortOptions.Date,
             [FromQuery] SortOrderOptions sortOrderOption = SortOrderOptions.ASC,

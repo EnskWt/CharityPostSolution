@@ -2,6 +2,7 @@
 using CharityPost.Core.DataTransferObjects.PublicationObjects;
 using CharityPost.Core.Domain.Entities.PublicationEntities;
 using CharityPost.Core.Domain.RepositoriesContracts;
+using CharityPost.Core.Helpers;
 using CharityPost.Core.Services.Commands.PublicationsCommands;
 using MediatR;
 using System;
@@ -17,12 +18,9 @@ namespace CharityPost.Core.Services.Handlers.PublicationsHandlers
     {
         private readonly IPublicationsRepository _publicationsRepository;
 
-        private readonly IOptionsExpressionsHelper _optionsExpressionsHelper;
-
-        public GetPublicationsCommandHandler(IPublicationsRepository publicationsRepository, IOptionsExpressionsHelper optionsExpressionsHelper)
+        public GetPublicationsCommandHandler(IPublicationsRepository publicationsRepository)
         {
             _publicationsRepository = publicationsRepository;
-            _optionsExpressionsHelper = optionsExpressionsHelper;
         }
 
         public async Task<List<PublicationResponse>?> Handle(GetPublicationsCommand request, CancellationToken cancellationToken)
@@ -32,8 +30,8 @@ namespace CharityPost.Core.Services.Handlers.PublicationsHandlers
                 throw new ArgumentNullException();
             }
 
-            string sortExpression = _optionsExpressionsHelper.GetSortExpression(request.SortOption, request.SortOrderOptions);
-            Expression<Func<Publication, bool>> filterExpression = _optionsExpressionsHelper.GetFilterExpression(request.Filters);
+            string sortExpression = OptionsExpressionsHelper.GetSortExpression(request.SortOption, request.SortOrderOptions);
+            Expression<Func<Publication, bool>> filterExpression = OptionsExpressionsHelper.GetFilterExpression(request.Filters);
             
             var publications = await _publicationsRepository.GetAllPublications(sortExpression, filterExpression, request.PageNumber, request.PageSize);
             return publications.Select(p => p.ToPublicationResponse()).ToList();

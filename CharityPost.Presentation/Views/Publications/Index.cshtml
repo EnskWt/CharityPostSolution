@@ -10,7 +10,7 @@
     {
         <div class="main__content__article">
 
-            <partial name="_ImageCarouselPartial" model="publication.ImagesUrls"></partial>
+            <partial name="_ImageCarouselPartial" model="publication.ImagesUrls" />
 
             <div class="main__content__article__title">
                 <h2>@publication.Title</h2>
@@ -46,5 +46,7 @@ else
 
 
 @section Scripts {
-    <partial name="_BootstrapScriptsPartial"></partial>
+    <partial name="_BootstrapScriptsPartial" />
+
+    <script src="~/js/saveQueryParameters.js"></script>
 }

@@ -11,50 +11,45 @@ using System.Threading.Tasks;
 
 namespace CharityPost.Core.Helpers
 {
-    public class OptionsExpressionsHelper : IOptionsExpressionsHelper
+    public static class OptionsExpressionsHelper // todo: static class
     {
-        private readonly Dictionary<SortOptions, string> _sorts;
-
-        private readonly Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>> _filters;
-
-        public OptionsExpressionsHelper()
+        private static readonly Dictionary<SortOptions, string> _sorts = new Dictionary<SortOptions, string>
         {
-            _sorts = new Dictionary<SortOptions, string>
-            {
-                { SortOptions.Date, "PublishedDate" }
-            };
+            { SortOptions.Date, "PublishedDate" }
+            // add more sorts here
+        };
 
-            _filters = new Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>>
-            {
-                { FilterOptions.Author, (value) =>
-                    {
-                        Guid authorId;
-                        var parseResult = Guid.TryParse(value, out authorId);
-                        return (publication) => publication.AuthorId == authorId;
-                    }
-                },
-                { FilterOptions.Category, (value) =>
-                    {
-                        PublicationCategories category;
-                        var parseResult = Enum.TryParse(value, out category);
-                        return (publication) => publication.PublicationCategory == category;
-                    }
-                },
-                { FilterOptions.Title, (value) =>
-                    {
-                        return (publication) => publication.Title.Contains(value.ToLower());
-                    }
+        private static readonly Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>> _filters = new Dictionary<FilterOptions, Func<string, Expression<Func<Publication, bool>>>>
+        {
+            { FilterOptions.Author, (value) =>
+                {
+                    Guid authorId;
+                    var parseResult = Guid.TryParse(value, out authorId);
+                    return (publication) => publication.AuthorId == authorId;
                 }
-            };
-        }
+            },
+            { FilterOptions.Category, (value) =>
+                {
+                    PublicationCategories category;
+                    var parseResult = Enum.TryParse(value, out category);
+                    return (publication) => publication.PublicationCategory == category;
+                }
+            },
+            { FilterOptions.Title, (value) =>
+                {
+                    return (publication) => publication.Title.Contains(value.ToLower());
+                }
+            }
+            // add more filters here
+        };
 
-        public string GetSortExpression(SortOptions sortOption, SortOrderOptions sortOrderOption)
+        public static string GetSortExpression(SortOptions sortOption, SortOrderOptions sortOrderOption)
         {
             string expression = $"{_sorts[sortOption].Normalize()} {sortOrderOption}";
             return expression;
         }
 
-        public Expression<Func<Publication, bool>> GetFilterExpression(Dictionary<FilterOptions, string> filters)
+        public static Expression<Func<Publication, bool>> GetFilterExpression(Dictionary<FilterOptions, string> filters)
         {
             var predicateExpression = PredicateBuilder.New<Publication>(true);
 

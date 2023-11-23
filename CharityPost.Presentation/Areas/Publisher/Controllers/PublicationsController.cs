@@ -34,6 +34,7 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
         // add action filter that add user id to filters (using filter context)
         // prevent inserting another publisher id to filters !!!!!!!!!
         [TypeFilter(typeof(AuthorFilterOptionActionFilter))]
+        [TypeFilter(typeof(RequestQueryParametersActionFilter))]
         [Route("/my-publications")]
         public async Task<IActionResult> Index(
             [FromQuery] SortOptions sortOption = SortOptions.Date,
@@ -130,7 +131,7 @@ namespace CharityPost.Presentation.Areas.Publisher.Controllers
                 return RedirectToAction("Index", "Publications");
             }
 
-            var isPublicationOwnedByAuthor = await _publicationsContextValidatorHelper.IsPublicationOwnedAuthor(publicationId, user.Id);
+            var isPublicationOwnedByAuthor = await _publicationsContextValidatorHelper.IsPublicationOwnedByAuthor(publicationId, user.Id);
             if (!isPublicationOwnedByAuthor)
             {
                 return RedirectToAction("Index", "Publications");

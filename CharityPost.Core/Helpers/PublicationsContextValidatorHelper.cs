@@ -18,7 +18,7 @@ namespace CharityPost.Core.Helpers
             _mediator = mediator;
         }
 
-        public async Task<bool> IsPublicationOwnedAuthor(Guid publicationId, Guid authorId)
+        public async Task<bool> IsPublicationOwnedByAuthor(Guid publicationId, Guid authorId)
         {
             var command = new GetPublicationCommand(publicationId);
 

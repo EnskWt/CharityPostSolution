@@ -9,7 +9,6 @@ namespace CharityPost.Presentation.StartupExtensions
     {
         public static IServiceCollection ConfigureHelpers(this IServiceCollection services)
         {
-            services.AddScoped<IOptionsExpressionsHelper, OptionsExpressionsHelper>();
             services.AddScoped<IPublicationsContextValidatorHelper, PublicationsContextValidatorHelper>();
             services.AddScoped<IModelValidatorHelper<IPublicationRequest>, PublicationRequestModelValidatorHelper>();
 
