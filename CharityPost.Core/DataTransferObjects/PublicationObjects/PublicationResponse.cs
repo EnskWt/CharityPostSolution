@@ -15,7 +15,18 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
 
         public int CurrentMoney { get; set; }
         public int TargetMoney { get; set; }
-        public double Progress => CurrentMoney / TargetMoney * 100;
+        public double Progress
+        {
+            get
+            {
+                double progress = CurrentMoney / TargetMoney * 100;
+
+                if (progress > 100) return 100;
+                if (progress < 0) return 0;
+
+                return progress;
+            }
+        }
 
         public List<string> ImagesUrls { get; set; } = null!;
 
