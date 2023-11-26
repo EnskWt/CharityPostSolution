@@ -141,7 +141,7 @@ namespace CharityPost.Infrastructure.Migrations
 
                     b.HasIndex("PublicationId");
 
-                    b.ToTable("Image");
+                    b.ToTable("Image", (string)null);
                 });
 
             modelBuilder.Entity("CharityPost.Core.Domain.Entities.PublicationEntities.Publication", b =>
@@ -177,7 +177,7 @@ namespace CharityPost.Infrastructure.Migrations
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Publications");
+                    b.ToTable("Publications", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

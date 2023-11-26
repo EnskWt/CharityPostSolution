@@ -17,9 +17,10 @@ if (app.Environment.IsDevelopment())
 }
 else if (app.Environment.IsProduction())
 {
-    app.UseExceptionHandler("/error");
-    app.UseStatusCodePagesWithReExecute("/error/{0}");
-    //app.UseExceptionHandlingMiddleware();
+    app.UseDeveloperExceptionPage();
+    //app.UseExceptionHandler("/error");
+    //app.UseStatusCodePagesWithReExecute("/error/{0}");
+    //app.UseExceptionHandlingMiddleware(); not implemented yet
 }
 
 app.UseHsts();
