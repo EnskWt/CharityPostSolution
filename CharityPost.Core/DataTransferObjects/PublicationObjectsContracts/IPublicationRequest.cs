@@ -15,7 +15,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjectsContracts
     {
         string Title { get; set; }
         string Description { get; set; }
-        int TargetMoney { get; set; }
+        double TargetMoney { get; set; }
         PublicationCategories PublicationCategory { get; set; }
         List<IFormFile> Images { get; set; }
         Publication ToPublication();

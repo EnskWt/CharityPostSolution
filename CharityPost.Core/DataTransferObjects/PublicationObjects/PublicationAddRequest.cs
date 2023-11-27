@@ -23,7 +23,7 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
 
         [Required(ErrorMessage = "Target money is required field")]
         [Range(100, 50000, ErrorMessage = "The amount of money requested must be between $100 and $50,000")]
-        public int TargetMoney { get; set; }
+        public double TargetMoney { get; set; }
 
         [Required(ErrorMessage = "You have to upload at least one image")]
         [FilesExtensions(Extensions = new string[] { "png", "jpg", "jpeg", "gif" })]      
