@@ -13,8 +13,8 @@ namespace CharityPost.Core.DataTransferObjects.PublicationObjects
         public PublicationCategories PublicationCategory { get; set; }
         public DateTime PublishedDate { get; set; }
 
-        public int CurrentMoney { get; set; }
-        public int TargetMoney { get; set; }
+        public double CurrentMoney { get; set; }
+        public double TargetMoney { get; set; }
         public double Progress
         {
             get
